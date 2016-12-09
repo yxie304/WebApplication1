@@ -39,7 +39,7 @@ public class locationManager {
     }
    
     public List<String> getTypes(){
-        List<String> retItem=Arrays.asList("Club", "Education", "Food","Health","Parking","Shop","SocialCenter","Sports","Travel","Transport");
+        List<String> retItem=Arrays.asList("Club", "Education", "Food","Health","Living","Parking","Shop","SocialCenter","Sports","Travel","Transport","Utility");
         return retItem;
     }
     
