@@ -14,6 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -25,7 +26,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Travel.findAll", query = "SELECT t FROM Travel t"),
-    @NamedQuery(name = "Travel.findByOsmId", query = "SELECT t FROM Travel t WHERE t.osmId = :osmId")})
+    @NamedQuery(name = "Travel.findByOsmId", query = "SELECT t FROM Travel t WHERE t.osmId = :osmId"),
+    @NamedQuery(name = "Travel.findByType", query = "SELECT t FROM Travel t WHERE t.type = :type")})
 public class Travel implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,6 +36,9 @@ public class Travel implements Serializable {
     @NotNull
     @Column(name = "osm_id")
     private Long osmId;
+    @Size(max = 2147483647)
+    @Column(name = "type")
+    private String type;
 
     public Travel() {
     }
@@ -48,6 +53,14 @@ public class Travel implements Serializable {
 
     public void setOsmId(Long osmId) {
         this.osmId = osmId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

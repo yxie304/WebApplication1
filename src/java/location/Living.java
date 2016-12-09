@@ -22,13 +22,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author yixxie
  */
 @Entity
-@Table(name = "education")
+@Table(name = "living")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Education.findAll", query = "SELECT e FROM Education e"),
-    @NamedQuery(name = "Education.findByOsmId", query = "SELECT e FROM Education e WHERE e.osmId = :osmId"),
-    @NamedQuery(name = "Education.findByAmenity", query = "SELECT e FROM Education e WHERE e.amenity = :amenity")})
-public class Education implements Serializable {
+    @NamedQuery(name = "Living.findAll", query = "SELECT l FROM Living l"),
+    @NamedQuery(name = "Living.findByOsmId", query = "SELECT l FROM Living l WHERE l.osmId = :osmId"),
+    @NamedQuery(name = "Living.findByBuilding", query = "SELECT l FROM Living l WHERE l.building = :building")})
+public class Living implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,13 +37,13 @@ public class Education implements Serializable {
     @Column(name = "osm_id")
     private Long osmId;
     @Size(max = 2147483647)
-    @Column(name = "amenity")
-    private String amenity;
+    @Column(name = "building")
+    private String building;
 
-    public Education() {
+    public Living() {
     }
 
-    public Education(Long osmId) {
+    public Living(Long osmId) {
         this.osmId = osmId;
     }
 
@@ -55,12 +55,12 @@ public class Education implements Serializable {
         this.osmId = osmId;
     }
 
-    public String getAmenity() {
-        return amenity;
+    public String getBuilding() {
+        return building;
     }
 
-    public void setAmenity(String amenity) {
-        this.amenity = amenity;
+    public void setBuilding(String building) {
+        this.building = building;
     }
 
     @Override
@@ -73,10 +73,10 @@ public class Education implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Education)) {
+        if (!(object instanceof Living)) {
             return false;
         }
-        Education other = (Education) object;
+        Living other = (Living) object;
         if ((this.osmId == null && other.osmId != null) || (this.osmId != null && !this.osmId.equals(other.osmId))) {
             return false;
         }
@@ -85,7 +85,7 @@ public class Education implements Serializable {
 
     @Override
     public String toString() {
-        return "location.Education[ osmId=" + osmId + " ]";
+        return "location.Living[ osmId=" + osmId + " ]";
     }
     
 }

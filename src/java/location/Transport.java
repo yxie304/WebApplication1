@@ -28,8 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Transport.findAll", query = "SELECT t FROM Transport t"),
     @NamedQuery(name = "Transport.findByOsmId", query = "SELECT t FROM Transport t WHERE t.osmId = :osmId"),
     @NamedQuery(name = "Transport.findByName", query = "SELECT t FROM Transport t WHERE t.name = :name"),
-    @NamedQuery(name = "Transport.findByPublicTransport", query = "SELECT t FROM Transport t WHERE t.publicTransport = :publicTransport"),
-    @NamedQuery(name = "Transport.findByRailway", query = "SELECT t FROM Transport t WHERE t.railway = :railway")})
+    @NamedQuery(name = "Transport.findByType", query = "SELECT t FROM Transport t WHERE t.type = :type")})
 public class Transport implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,11 +41,8 @@ public class Transport implements Serializable {
     @Column(name = "name")
     private String name;
     @Size(max = 2147483647)
-    @Column(name = "public_transport")
-    private String publicTransport;
-    @Size(max = 2147483647)
-    @Column(name = "railway")
-    private String railway;
+    @Column(name = "type")
+    private String type;
 
     public Transport() {
     }
@@ -71,20 +67,12 @@ public class Transport implements Serializable {
         this.name = name;
     }
 
-    public String getPublicTransport() {
-        return publicTransport;
+    public String getType() {
+        return type;
     }
 
-    public void setPublicTransport(String publicTransport) {
-        this.publicTransport = publicTransport;
-    }
-
-    public String getRailway() {
-        return railway;
-    }
-
-    public void setRailway(String railway) {
-        this.railway = railway;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

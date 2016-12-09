@@ -14,6 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -25,7 +26,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Health.findAll", query = "SELECT h FROM Health h"),
-    @NamedQuery(name = "Health.findByOsmId", query = "SELECT h FROM Health h WHERE h.osmId = :osmId")})
+    @NamedQuery(name = "Health.findByOsmId", query = "SELECT h FROM Health h WHERE h.osmId = :osmId"),
+    @NamedQuery(name = "Health.findByAmenity", query = "SELECT h FROM Health h WHERE h.amenity = :amenity")})
 public class Health implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,6 +36,9 @@ public class Health implements Serializable {
     @NotNull
     @Column(name = "osm_id")
     private Long osmId;
+    @Size(max = 2147483647)
+    @Column(name = "amenity")
+    private String amenity;
 
     public Health() {
     }
@@ -48,6 +53,14 @@ public class Health implements Serializable {
 
     public void setOsmId(Long osmId) {
         this.osmId = osmId;
+    }
+
+    public String getAmenity() {
+        return amenity;
+    }
+
+    public void setAmenity(String amenity) {
+        this.amenity = amenity;
     }
 
     @Override

@@ -22,13 +22,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author yixxie
  */
 @Entity
-@Table(name = "education")
+@Table(name = "utility")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Education.findAll", query = "SELECT e FROM Education e"),
-    @NamedQuery(name = "Education.findByOsmId", query = "SELECT e FROM Education e WHERE e.osmId = :osmId"),
-    @NamedQuery(name = "Education.findByAmenity", query = "SELECT e FROM Education e WHERE e.amenity = :amenity")})
-public class Education implements Serializable {
+    @NamedQuery(name = "Utility.findAll", query = "SELECT u FROM Utility u"),
+    @NamedQuery(name = "Utility.findByOsmId", query = "SELECT u FROM Utility u WHERE u.osmId = :osmId"),
+    @NamedQuery(name = "Utility.findByAmenity", query = "SELECT u FROM Utility u WHERE u.amenity = :amenity")})
+public class Utility implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,10 +40,10 @@ public class Education implements Serializable {
     @Column(name = "amenity")
     private String amenity;
 
-    public Education() {
+    public Utility() {
     }
 
-    public Education(Long osmId) {
+    public Utility(Long osmId) {
         this.osmId = osmId;
     }
 
@@ -73,10 +73,10 @@ public class Education implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Education)) {
+        if (!(object instanceof Utility)) {
             return false;
         }
-        Education other = (Education) object;
+        Utility other = (Utility) object;
         if ((this.osmId == null && other.osmId != null) || (this.osmId != null && !this.osmId.equals(other.osmId))) {
             return false;
         }
@@ -85,7 +85,7 @@ public class Education implements Serializable {
 
     @Override
     public String toString() {
-        return "location.Education[ osmId=" + osmId + " ]";
+        return "location.Utility[ osmId=" + osmId + " ]";
     }
     
 }
