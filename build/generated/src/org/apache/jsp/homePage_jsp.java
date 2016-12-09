@@ -105,7 +105,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("\n");
       out.write("                        </select>\n");
-      out.write("                         \n");
+      out.write("                            <br>\n");
       out.write("                        \n");
       out.write("                        \n");
       out.write("                       \n");

@@ -42,7 +42,7 @@
                                 <option value="${type}">${type}</option>
                             </c:forEach>
                         </select>
-                         
+                            <br>
                         
                         
                        
