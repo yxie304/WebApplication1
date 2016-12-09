@@ -32,15 +32,17 @@
                     <h4 class="text-center">Advanced Search</h4>
                 </div>
                 <div class="panel-body">
-                    <form action="http://localhost:8080/6400/testServlet" method="post">
-                        <label for="type">Select Type:</label>
+                    <form action="http://localhost:8080/WebApplication1/testServlet" method="get">
+                        
+                       <label for="type">Select Type:</label>
                         <select class="form-control" name="type">
-                            <option value="Sports">Sports</option>
-                            <option value="Club">Club</option>
+                            <option selected="selected" value="${sType}">${sType}</option>
+                            <c:forEach items="${p.types}" var="type">
+                              
+                                <option value="${type}">${type}</option>
+                            </c:forEach>
                         </select>
-                        <br>
-                        
-                        
+                         
                         
                         
                        

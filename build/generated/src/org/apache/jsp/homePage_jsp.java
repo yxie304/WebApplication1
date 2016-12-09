@@ -90,15 +90,22 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <h4 class=\"text-center\">Advanced Search</h4>\n");
       out.write("                </div>\n");
       out.write("                <div class=\"panel-body\">\n");
-      out.write("                    <form action=\"http://localhost:8080/6400/testServlet\" method=\"post\">\n");
-      out.write("                        <label for=\"type\">Select Type:</label>\n");
+      out.write("                    <form action=\"http://localhost:8080/WebApplication1/testServlet\" method=\"get\">\n");
+      out.write("                        \n");
+      out.write("                       <label for=\"type\">Select Type:</label>\n");
       out.write("                        <select class=\"form-control\" name=\"type\">\n");
-      out.write("                            <option value=\"Sports\">Sports</option>\n");
-      out.write("                            <option value=\"Club\">Club</option>\n");
+      out.write("                            <option selected=\"selected\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sType}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write('"');
+      out.write('>');
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sType}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</option>\n");
+      out.write("                            ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\n");
       out.write("                        </select>\n");
-      out.write("                        <br>\n");
-      out.write("                        \n");
-      out.write("                        \n");
+      out.write("                         \n");
       out.write("                        \n");
       out.write("                        \n");
       out.write("                       \n");
@@ -200,7 +207,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    \n");
       out.write("        <div class=\"pull-right\">  \n");
       out.write("                ");
-      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
         return;
       out.write("\n");
       out.write("        </div>\n");
@@ -230,24 +237,22 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${returnList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    _jspx_th_c_forEach_0.setVar("item");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${p.types}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("type");
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\n");
-          out.write("                    <div class=\"row\">\n");
-          out.write("                        <div class=\"panel panel-primary\" style=\"width: 50%;\">\n");
-          out.write("                            <div class=\"panel-body\">\n");
-          out.write("                                <font size=\"2\">");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${item.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</font>   \n");
-          out.write("                            </div>\n");
-          out.write("                        </div>\n");
-          out.write("                    </div>\n");
-          out.write("                ");
+          out.write("                              \n");
+          out.write("                                <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${type}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${type}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option>\n");
+          out.write("                            ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -263,6 +268,51 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspx_th_c_forEach_0.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${returnList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setVar("item");
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                    <div class=\"row\">\n");
+          out.write("                        <div class=\"panel panel-primary\" style=\"width: 50%;\">\n");
+          out.write("                            <div class=\"panel-body\">\n");
+          out.write("                                <font size=\"2\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${item.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</font>   \n");
+          out.write("                            </div>\n");
+          out.write("                        </div>\n");
+          out.write("                    </div>\n");
+          out.write("                ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
     }
     return false;
   }

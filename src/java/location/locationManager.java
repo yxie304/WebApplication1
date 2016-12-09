@@ -1,6 +1,7 @@
 package location;
 
 
+import java.util.Arrays;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,10 +37,10 @@ public class locationManager {
         }
         return retItem;
     }
-   /** 
+   
     public List<String> getTypes(){
         List<String> retItem=Arrays.asList("Club", "Education", "Food","Health","Parking","Shop","SocialCenter","Sports","Travel","Transport");
         return retItem;
     }
-    */
+    
 }
