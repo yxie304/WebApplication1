@@ -43,4 +43,20 @@ public class locationManager {
         return retItem;
     }
     
+    public List<Place> findByName(String name){
+        List<Place> retItem;
+        try {
+            Query query = em.createQuery("SELECT c from Place c WHERE c.name = ?1");
+            query.setParameter(1, name);
+            retItem = query.getResultList();
+            if (retItem.isEmpty()){
+                return null;
+            }
+        } catch (NoResultException e) {
+            System.out.println("Item with name " + name + " not found.\n");
+            return null;
+        }
+        return retItem;
+    }
+    
 }
