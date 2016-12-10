@@ -41,6 +41,7 @@
                 </form>
                 
                 <h3 align="center" style="color:#FF0000;">${errorMessage}</h3> 
+                <h3 align="center" style="color:#FF0000;">${size}</h3> 
                 <div class="panel-body">
                     <form action="http://localhost:8080/WebApplication1/searchServlet" method="get">
                        <input type="hidden"  name="search" value="advanced">
@@ -83,6 +84,7 @@
     
     epsg4326 =  new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
     epsg3857 = new OpenLayers.Projection("EPSG:3857");
+    epsg900913=new OpenLayers.Projection("EPSG:900913");
     projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
     var lat=33.7756;
     var lon=-84.3963;
@@ -91,18 +93,13 @@
     var lonLat = new OpenLayers.LonLat(lon,lat).transform(epsg4326, projectTo);
           
     
-    var zoom=17;
+    var zoom=15;
     map.setCenter (lonLat, zoom);
 
     var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
     
     
-    var projWGS84 = new OpenLayers.Projection("EPSG:4326");
-    var proj900913 = new OpenLayers.Projection("EPSG:900913");
-
-    var point = new OpenLayers.LonLat(-939488028, 399896208);
-    var point2 =  point.transform(proj900913, projWGS84);
-    
+   
     
 
     var list = [
@@ -110,38 +107,24 @@
         { lon: lon+0.001, lat: lat+0.001},
         { lon: lon-0.001,  lat: lat-0.001  }
     ];
-
-    for (var i = 0; i < 3; i++) {
+    
+    
+   
+    var list= <%=request.getAttribute("position")%>;
+   
+   
+    for (var i = 0; i <list.length; i++) {
       var feature = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),
             {description:'This is the value of<br>the description attribute'} ,
             {externalGraphic: 'http://dev.openlayers.org/icons/image2.gif', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
         );    
-    vectorLayer.addFeatures(feature); 
+    vectorLayer.addFeatures(feature);
    
     }
-    
-            /**
-    var lalala = new OpenLayers.LonLat(-939488028, 399896208).transform(proj900913, projWGS84);
-            
-    
-    var feature = new OpenLayers.Feature.Vector(
-            new OpenLayers.Geometry.Point(lalala).transform(epsg4326, projectTo),
-            //new OpenLayers.LonLat(-939488028, 399896208).transform(proj900913, projWGS84),
-            {description:'xieyi'} ,
-            {externalGraphic: 'http://dev.openlayers.org/icons/image2.gif', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
-        );    
-    
-    vectorLayer.addFeatures(feature);
-    */
+   
+   
     // Define markers as "features" of the vector layer:
-    
-    
-   
-
-
-
-   
     map.addLayer(vectorLayer);
  
     

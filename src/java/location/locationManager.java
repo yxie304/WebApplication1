@@ -30,7 +30,10 @@ public class locationManager {
         try {
             Query query = em.createQuery("SELECT c from Place c \n" +
 "      inner join " + type + " d on c.osmId = d.osmId");
-            retItem = query.getResultList();
+            retItem =(List<Place>)query.getResultList();
+            if (retItem.isEmpty()){
+                return null;
+            }
         } catch (NoResultException e) {
             System.out.println("Item with name " + type + " not found.\n");
             return null;

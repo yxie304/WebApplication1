@@ -7,6 +7,7 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,26 +40,49 @@ public class searchServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         locationManager  p= (locationManager)request.getSession().getAttribute("p");
         String search=request.getParameter("search");
+        int mark=0; //don't to add marker
+        List<Place> result=new ArrayList<>();
         if (search.equals("basic")){
             String name=request.getParameter("SearchParameter");
-            List<Place> result=p.findByName(name);
+            result=p.findByName(name);
             if (result==null){
                 request.setAttribute("errorMessage", "Place not found! Please try again!");
             }
             else{
                 request.setAttribute("returnList",result);
-          
-                //List<HashMap<String,String>>=new List<HashMap<String,String>>;
-                //for (int i=0;i<result.size();i++){
-                  //  Lonlat lonlat=p.findbyID(result.get(i).getOsmId());
-                  //  position.put(lonlat.getLon(),lonlat.getLon());
-               // }
+                mark=1;
             }
         }
         else if(search.equals("advanced")){
             String sType=request.getParameter("type");
-            request.setAttribute("returnList",p.findByType(sType));
-            request.setAttribute("sType", sType);
+            result=p.findByType(sType);
+            if (result==null){
+                request.setAttribute("errorMessage", "No place for this type! Please try again!");
+            }
+            else{
+                request.setAttribute("returnList",result);
+                request.setAttribute("sType", sType);
+                mark=1;
+            }
+        }
+        if (mark==1){
+            List<String> positionList = new ArrayList<>();
+            int size=result.size();
+            request.setAttribute("size", size);
+            for (int i=0;i<result.size();i++){
+                Lonlat lonlat=p.findbyID(result.get(i).getOsmId());
+               // Lonlat lonlat=p.findbyID(42706715);
+                if(lonlat!=null){
+                    positionList.add("{lon:"+lonlat.getLon()/100.0+","+"lat: "+lonlat.getLat()/100.0+" }");
+                }
+            }
+            if(positionList.isEmpty()){
+                request.setAttribute("errorMessage", "No marker added!");
+            }
+            else{
+                request.setAttribute("position", positionList);
+            }
+            
         }
         RequestDispatcher dispatcher =request.getRequestDispatcher("homePage.jsp");
         dispatcher.forward(request,response);
