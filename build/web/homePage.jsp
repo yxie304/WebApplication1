@@ -27,10 +27,11 @@
  </head>
 <body>
     
-<div class="col-md-3">
+<div class="col-md-3" >
             <div class="panel panel-success">
-                <form class="navbar-form" action="http://localhost:8080/WebApplication1/searchServlet"method="get">
+                <form class="navbar-form" action="http://localhost:8080/WebApplication1/searchServlet?"method="get">
                    <div class="input-group">
+                        <input type="hidden"  name="search" value="basic">
                         <input type="text" class="form-control"  name="SearchParameter" id="SearchParameter">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>Search</button>
@@ -39,9 +40,11 @@
 
                 </form>
                 
+                <h3 align="center" style="color:#FF0000;">${errorMessage}</h3> 
                 <div class="panel-body">
-                    <form action="http://localhost:8080/WebApplication1/testServlet" method="get">
-                       <label for="type">Select Type:</label>
+                    <form action="http://localhost:8080/WebApplication1/searchServlet" method="get">
+                       <input type="hidden"  name="search" value="advanced">
+                        <label for="type">Select Type:</label>
                         <select class="form-control" name="type">
                             <option selected="selected" value="${sType}">${sType}</option>
                             <c:forEach items="${p.types}" var="type">
@@ -52,7 +55,7 @@
                         <input type="submit" class="btn btn-info"/>
                     </form>
                    
-                    <div>  
+                    <div style="overflow-y: scroll; height:400px">  
                         <c:forEach items="${returnList}" var="item">
                             <div class="row">
                                 <div class="panel panel-primary" style="width: 80%;">
@@ -63,8 +66,8 @@
                             </div>
                         </c:forEach>
                     </div>   
+                      
                             
-                             <h3 align="center" style="color:#FF0000;">${errorMessage}</h3>
                 </div>
             </div>
         </div>
@@ -79,7 +82,7 @@
     map.addLayer(new OpenLayers.Layer.OSM());
     
     epsg4326 =  new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
-    epsg900913 = new OpenLayers.Projection("EPSG:3857");
+    epsg3857 = new OpenLayers.Projection("EPSG:3857");
     projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
     var lat=33.7756;
     var lon=-84.3963;
@@ -110,11 +113,11 @@
 
     for (var i = 0; i < 3; i++) {
       var feature = new OpenLayers.Feature.Vector(
-            new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg4326, projectTo),
+            new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),
             {description:'This is the value of<br>the description attribute'} ,
             {externalGraphic: 'http://dev.openlayers.org/icons/image2.gif', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
         );    
-    vectorLayer.addFeatures(feature); -939488028, 399896208 -84.3963, 33.7756
+    vectorLayer.addFeatures(feature); 
    
     }
     

@@ -7,12 +7,15 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import location.Lonlat;
 import location.Place;
 import location.locationManager;
 
@@ -35,13 +38,27 @@ public class searchServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         locationManager  p= (locationManager)request.getSession().getAttribute("p");
-        String name=request.getParameter("SearchParameter");
-        List<Place> result=p.findByName(name);
-        if (result==null){
-            request.setAttribute("errorMessage", "Place not found! Please try again!");
+        String search=request.getParameter("search");
+        if (search.equals("basic")){
+            String name=request.getParameter("SearchParameter");
+            List<Place> result=p.findByName(name);
+            if (result==null){
+                request.setAttribute("errorMessage", "Place not found! Please try again!");
+            }
+            else{
+                request.setAttribute("returnList",result);
+          
+                //List<HashMap<String,String>>=new List<HashMap<String,String>>;
+                //for (int i=0;i<result.size();i++){
+                  //  Lonlat lonlat=p.findbyID(result.get(i).getOsmId());
+                  //  position.put(lonlat.getLon(),lonlat.getLon());
+               // }
+            }
         }
-        else{
-            request.setAttribute("returnList",result);
+        else if(search.equals("advanced")){
+            String sType=request.getParameter("type");
+            request.setAttribute("returnList",p.findByType(sType));
+            request.setAttribute("sType", sType);
         }
         RequestDispatcher dispatcher =request.getRequestDispatcher("homePage.jsp");
         dispatcher.forward(request,response);

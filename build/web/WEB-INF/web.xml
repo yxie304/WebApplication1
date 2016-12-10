@@ -5,20 +5,12 @@
         <servlet-class>Servlet.testServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NewServlet</servlet-name>
-        <servlet-class>Servlet.NewServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>searchServlet</servlet-name>
         <servlet-class>Servlet.searchServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>testServlet</servlet-name>
         <url-pattern>/testServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NewServlet</servlet-name>
-        <url-pattern>/NewServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>searchServlet</servlet-name>

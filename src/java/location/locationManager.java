@@ -59,4 +59,9 @@ public class locationManager {
         return retItem;
     }
     
+    public Lonlat findbyID(long id){
+        Lonlat item = em.find(location.Lonlat.class, id);
+        return item;
+    }
+    
 }
