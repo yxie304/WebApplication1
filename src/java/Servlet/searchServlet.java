@@ -70,10 +70,11 @@ public class searchServlet extends HttpServlet {
             int size=result.size();
             request.setAttribute("size", size);
             for (int i=0;i<result.size();i++){
-                Lonlat lonlat=p.findbyID(result.get(i).getOsmId());
+                Lonlat lonlat=(Lonlat)p.findbyID(result.get(i).getOsmId());
+                String positionName=result.get(i).getName();
                // Lonlat lonlat=p.findbyID(42706715);
                 if(lonlat!=null){
-                    positionList.add("{lon:"+lonlat.getLon()/100.0+","+"lat: "+lonlat.getLat()/100.0+" }");
+                    positionList.add("{lon:"+lonlat.getLon()+","+"lat: "+lonlat.getLat()+","+"name: "+"\""+positionName+"\""+"}");
                 }
             }
             if(positionList.isEmpty()){

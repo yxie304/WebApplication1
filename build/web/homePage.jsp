@@ -41,7 +41,6 @@
                 </form>
                 
                 <h3 align="center" style="color:#FF0000;">${errorMessage}</h3> 
-                <h3 align="center" style="color:#FF0000;">${size}</h3> 
                 <div class="panel-body">
                     <form action="http://localhost:8080/WebApplication1/searchServlet" method="get">
                        <input type="hidden"  name="search" value="advanced">
@@ -91,8 +90,6 @@
    // var lat = 399896208;
    // var lon = -939488028;
     var lonLat = new OpenLayers.LonLat(lon,lat).transform(epsg4326, projectTo);
-          
-    
     var zoom=15;
     map.setCenter (lonLat, zoom);
 
@@ -116,7 +113,7 @@
     for (var i = 0; i <list.length; i++) {
       var feature = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),
-            {description:'This is the value of<br>the description attribute'} ,
+            {description:list[i].name} ,
             {externalGraphic: 'http://dev.openlayers.org/icons/image2.gif', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
         );    
     vectorLayer.addFeatures(feature);

@@ -101,9 +101,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <h3 align=\"center\" style=\"color:#FF0000;\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${errorMessage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</h3> \n");
-      out.write("                <h3 align=\"center\" style=\"color:#FF0000;\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${size}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</h3> \n");
+      out.write("                 \n");
       out.write("                <div class=\"panel-body\">\n");
       out.write("                    <form action=\"http://localhost:8080/WebApplication1/searchServlet\" method=\"get\">\n");
       out.write("                       <input type=\"hidden\"  name=\"search\" value=\"advanced\">\n");
@@ -154,8 +152,6 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("   // var lat = 399896208;\n");
       out.write("   // var lon = -939488028;\n");
       out.write("    var lonLat = new OpenLayers.LonLat(lon,lat).transform(epsg4326, projectTo);\n");
-      out.write("          \n");
-      out.write("    \n");
       out.write("    var zoom=15;\n");
       out.write("    map.setCenter (lonLat, zoom);\n");
       out.write("\n");
@@ -181,7 +177,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    for (var i = 0; i <list.length; i++) {\n");
       out.write("      var feature = new OpenLayers.Feature.Vector(\n");
       out.write("            new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),\n");
-      out.write("            {description:'This is the value of<br>the description attribute'} ,\n");
+      out.write("            {description:list[i].name} ,\n");
       out.write("            {externalGraphic: 'http://dev.openlayers.org/icons/image2.gif', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }\n");
       out.write("        );    \n");
       out.write("    vectorLayer.addFeatures(feature);\n");
