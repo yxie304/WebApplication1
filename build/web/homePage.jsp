@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://openlayers.org/en/v3.19.1/css/ol.css" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
       .map {
         height: 400px;
@@ -24,6 +27,7 @@
     <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
     <title>OpenLayers 3 example</title>
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
  </head>
 <body>
     
@@ -51,10 +55,10 @@
                                 <option value="${type}">${type}</option>
                             </c:forEach>
                         </select>
-                            <br>
+                            <br>                       
                         <input type="submit" class="btn btn-info"/>
                     </form>
-                   
+                                              
                     <div style="overflow-y: scroll; height:400px">  
                         <c:forEach items="${returnList}" var="item">
                             <div class="row">
@@ -114,7 +118,7 @@
       var feature = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),
             {description:list[i].name} ,
-            {externalGraphic: 'http://dev.openlayers.org/icons/image2.gif', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
+            {externalGraphic: 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/256/Map-Marker-Ball-Pink-icon.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
         );    
     vectorLayer.addFeatures(feature);
    

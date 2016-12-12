@@ -72,6 +72,9 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" href=\"https://openlayers.org/en/v3.19.1/css/ol.css\" type=\"text/css\">\n");
       out.write("    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"css/bootstrap.css\">\n");
+      out.write("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n");
+      out.write("    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js\"></script>\n");
+      out.write("    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n");
       out.write("    <style>\n");
       out.write("      .map {\n");
       out.write("        height: 400px;\n");
@@ -82,6 +85,9 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <script src=\"https://openlayers.org/en/v3.19.1/build/ol.js\" type=\"text/javascript\"></script>\n");
       out.write("    <title>OpenLayers 3 example</title>\n");
       out.write("    <script src=\"http://www.openlayers.org/api/OpenLayers.js\"></script>\n");
+      out.write("    <script src=\"http://code.jquery.com/jquery-latest.min.js\"></script>\n");
+      out.write("       \n");
+      out.write("    \n");
       out.write(" </head>\n");
       out.write("<body>\n");
       out.write("    \n");
@@ -101,7 +107,6 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <h3 align=\"center\" style=\"color:#FF0000;\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${errorMessage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</h3> \n");
-      out.write("                 \n");
       out.write("                <div class=\"panel-body\">\n");
       out.write("                    <form action=\"http://localhost:8080/WebApplication1/searchServlet\" method=\"get\">\n");
       out.write("                       <input type=\"hidden\"  name=\"search\" value=\"advanced\">\n");
@@ -118,10 +123,10 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("\n");
       out.write("                        </select>\n");
-      out.write("                            <br>\n");
+      out.write("                            <br>                       \n");
       out.write("                        <input type=\"submit\" class=\"btn btn-info\"/>\n");
       out.write("                    </form>\n");
-      out.write("                   \n");
+      out.write("                                              \n");
       out.write("                    <div style=\"overflow-y: scroll; height:400px\">  \n");
       out.write("                        ");
       if (_jspx_meth_c_forEach_1(_jspx_page_context))
@@ -178,7 +183,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      var feature = new OpenLayers.Feature.Vector(\n");
       out.write("            new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),\n");
       out.write("            {description:list[i].name} ,\n");
-      out.write("            {externalGraphic: 'http://dev.openlayers.org/icons/image2.gif', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }\n");
+      out.write("            {externalGraphic: 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/256/Map-Marker-Ball-Pink-icon.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }\n");
       out.write("        );    \n");
       out.write("    vectorLayer.addFeatures(feature);\n");
       out.write("   \n");
