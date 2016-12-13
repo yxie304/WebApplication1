@@ -134,7 +134,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </form>\n");
       out.write("                        \n");
       out.write("                    <form action=\"http://www.google.com/\"> \n");
-      out.write("                        <input type=\"image\" src=\"http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg\" alt=\"Submit\" width=\"80\" height=\"80\">\n");
+      out.write("                        <input type=\"image\" src=\"http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg\" alt=\"Submit\" width=\"100\" height=\"120\">\n");
       out.write("                    </form>\n");
       out.write("                        \n");
       out.write("                        <div style=\"overflow-y: scroll; height:400px\">  \n");

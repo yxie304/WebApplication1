@@ -68,7 +68,7 @@
                     </form>
                         
                     <form action="http://www.google.com/"> 
-                        <input type="image" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="80" height="80">
+                        <input type="image" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="100" height="120">
                     </form>
                         
                         <div style="overflow-y: scroll; height:400px">  
