@@ -17,6 +17,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="dist/css/bootstrap-submenu.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer></script>
+    <script src="dist/js/bootstrap-submenu.min.js" defer></script>
     <style>
       .map {
         height: 400px;
@@ -27,7 +33,6 @@
     <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
     <title>OpenLayers 3 example</title>
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
  </head>
 <body>
     
@@ -48,6 +53,7 @@
                 <div class="panel-body">
                     <form action="http://localhost:8080/WebApplication1/searchServlet" method="get">
                        <input type="hidden"  name="search" value="advanced">
+                       
                         <label for="type">Select Type:</label>
                         <select class="form-control" name="type">
                             <option selected="selected" value="${sType}">${sType}</option>
@@ -55,14 +61,16 @@
                                 <option value="${type}">${type}</option>
                             </c:forEach>
                         </select>
-                            <br>                       
+                            <br>    
+                        <input type="checkbox" name="currentOpen" value="open">Currently open<br>
+                            <br>
                         <input type="submit" class="btn btn-info"/>
                     </form>
                                               
                     <div style="overflow-y: scroll; height:400px">  
                         <c:forEach items="${returnList}" var="item">
                             <div class="row">
-                                <div class="panel panel-primary" style="width: 80%;">
+                                <div class="panel panel-primary" style="width: 85%;">
                                     <div class="panel-body" style="margin:auto" >
                                         <font size="2">${item.name}</font>   
                                     </div>

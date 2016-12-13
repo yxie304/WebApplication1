@@ -75,6 +75,12 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n");
       out.write("    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js\"></script>\n");
       out.write("    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n");
+      out.write("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n");
+      out.write("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\">\n");
+      out.write("    <link rel=\"stylesheet\" href=\"dist/css/bootstrap-submenu.min.css\">\n");
+      out.write("    <script src=\"https://code.jquery.com/jquery-3.1.0.min.js\" defer></script>\n");
+      out.write("    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" defer></script>\n");
+      out.write("    <script src=\"dist/js/bootstrap-submenu.min.js\" defer></script>\n");
       out.write("    <style>\n");
       out.write("      .map {\n");
       out.write("        height: 400px;\n");
@@ -85,9 +91,6 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <script src=\"https://openlayers.org/en/v3.19.1/build/ol.js\" type=\"text/javascript\"></script>\n");
       out.write("    <title>OpenLayers 3 example</title>\n");
       out.write("    <script src=\"http://www.openlayers.org/api/OpenLayers.js\"></script>\n");
-      out.write("    <script src=\"http://code.jquery.com/jquery-latest.min.js\"></script>\n");
-      out.write("       \n");
-      out.write("    \n");
       out.write(" </head>\n");
       out.write("<body>\n");
       out.write("    \n");
@@ -110,6 +113,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"panel-body\">\n");
       out.write("                    <form action=\"http://localhost:8080/WebApplication1/searchServlet\" method=\"get\">\n");
       out.write("                       <input type=\"hidden\"  name=\"search\" value=\"advanced\">\n");
+      out.write("                       \n");
       out.write("                        <label for=\"type\">Select Type:</label>\n");
       out.write("                        <select class=\"form-control\" name=\"type\">\n");
       out.write("                            <option selected=\"selected\" value=\"");
@@ -123,7 +127,9 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("\n");
       out.write("                        </select>\n");
-      out.write("                            <br>                       \n");
+      out.write("                            <br>    \n");
+      out.write("                        <input type=\"checkbox\" name=\"currentOpen\" value=\"open\">Currently open<br>\n");
+      out.write("                            <br>\n");
       out.write("                        <input type=\"submit\" class=\"btn btn-info\"/>\n");
       out.write("                    </form>\n");
       out.write("                                              \n");
@@ -311,7 +317,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
         do {
           out.write("\n");
           out.write("                            <div class=\"row\">\n");
-          out.write("                                <div class=\"panel panel-primary\" style=\"width: 80%;\">\n");
+          out.write("                                <div class=\"panel panel-primary\" style=\"width: 85%;\">\n");
           out.write("                                    <div class=\"panel-body\" style=\"margin:auto\" >\n");
           out.write("                                        <font size=\"2\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${item.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));

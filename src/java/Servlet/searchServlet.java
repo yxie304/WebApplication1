@@ -55,7 +55,13 @@ public class searchServlet extends HttpServlet {
         }
         else if(search.equals("advanced")){
             String sType=request.getParameter("type");
-            result=p.findByType(sType);
+            String currentOpen=request.getParameter("currentOpen");
+            if(currentOpen!=null && !currentOpen.isEmpty()){  
+                result=p.findByType(sType,"yes");  //find currently open 
+            }
+            else{
+                result=p.findByType(sType,"no");
+            }
             if (result==null){
                 request.setAttribute("errorMessage", "No place for this type! Please try again!");
             }
@@ -70,7 +76,7 @@ public class searchServlet extends HttpServlet {
             int size=result.size();
             request.setAttribute("size", size);
             for (int i=0;i<result.size();i++){
-                Lonlat lonlat=(Lonlat)p.findbyID(result.get(i).getOsmId());
+                Lonlat lonlat=p.findbyID(result.get(i).getOsmId());
                 String positionName=result.get(i).getName();
                // Lonlat lonlat=p.findbyID(42706715);
                 if(lonlat!=null){
