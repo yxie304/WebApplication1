@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -20,7 +21,10 @@ import location.Place;
 public class locationManager {
     EntityManager em;
     
-    
+    @PreDestroy
+    public void destruct(){
+        em.close();
+    }
     public locationManager() {
         EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("WebApplication1PU");
         em = emf.createEntityManager();
@@ -79,5 +83,11 @@ public class locationManager {
         Lonlat item = em.find(location.Lonlat.class, osm_id);
         return item;
     }
-    
+     
+    public Event findEvent(){
+        int event_id = (int )(Math.random() * 11 + 1);
+        Event event = em.find(location.Event.class,event_id);
+        
+        return event;
+    }
 }

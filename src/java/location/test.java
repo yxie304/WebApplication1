@@ -16,21 +16,19 @@ import java.util.List;
  */
 public class test {
     public static void main(String args[]){
-        /**
+        
         locationManager pm=new locationManager();
         try {
-            List<Place> item=pm.findByType("Sports","open");
-            for (int i=0;i<item.size();i++){
-                System.out.println(item.get(i).getName());
-            }
+            Event event=pm.findEvent();
+            
+            System.out.println(event.getDescription());
+           
+            
           
         } catch(NullPointerException e) {
           System.out.println(e);
 }
-*/
-        DateFormat df = new SimpleDateFormat("HH:mm:ss");
-Date dateobj = new Date();
-String a=df.format(dateobj);
-System.out.println(a);
+
+     
     }
 }

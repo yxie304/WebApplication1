@@ -7,7 +7,10 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import location.Event;
 import location.Lonlat;
 import location.Place;
 import location.locationManager;
@@ -41,7 +45,9 @@ public class searchServlet extends HttpServlet {
         locationManager  p= (locationManager)request.getSession().getAttribute("p");
         String search=request.getParameter("search");
         int mark=0; //don't to add marker
+        int showEvent=0; //don't show event
         List<Place> result=new ArrayList<>();
+        Event event=new Event();
         if (search.equals("basic")){
             String name=request.getParameter("SearchParameter");
             result=p.findByName(name);
@@ -71,6 +77,14 @@ public class searchServlet extends HttpServlet {
                 mark=1;
             }
         }
+        else if(search.equals("event")){
+            event=p.findEvent();
+            String description=event.getTopic();
+            result.add(event.getPlaceId());
+            request.setAttribute("eventList",description);
+            mark=1;
+            showEvent=1;
+        }
         if (mark==1){
             List<String> positionList = new ArrayList<>();
             int size=result.size();
@@ -80,7 +94,30 @@ public class searchServlet extends HttpServlet {
                 String positionName=result.get(i).getName();
                // Lonlat lonlat=p.findbyID(42706715);
                 if(lonlat!=null){
-                    positionList.add("{lon:"+lonlat.getLon()+","+"lat: "+lonlat.getLat()+","+"name: "+"\""+positionName+"\""+"}");
+                    if(showEvent==1){
+                        String description=event.getDescription();
+                        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String time=df.format(event.getTime());
+                        String topic=event.getTopic();
+                        positionList.add("{lon:"+lonlat.getLon()+","+"lat: "+lonlat.getLat()+","+"name: "+"\""+positionName+"\""+","+"description: "+"\""+description+"\""+","+"topic: "+"\""+topic+"\""+","+"time: "+"\""+time+"\"" +"}");
+                        request.setAttribute("showEvent",1);
+                    }
+                    else{
+                        DateFormat df = new SimpleDateFormat("HH:mm:ss");
+                        String openTime="Not available";
+                        String closeTime="Not available";
+                        Date o=result.get(i).getOpenTime();
+                        Date c=result.get(i).getCloseTime();
+                        if(o!=null){
+                            openTime=df.format(o);
+                        }
+                        if(c!=null){
+                            closeTime=df.format(c);
+                        }
+                       
+                        positionList.add("{lon:"+lonlat.getLon()+","+"lat: "+lonlat.getLat()+","+"name: "+"\""+positionName+"\""+","+"openTime: "+"\""+openTime+"\""+","+"closeTime: "+"\""+closeTime+"\"" +"}");
+                        request.setAttribute("showEvent",0);
+                    }
                 }
             }
             if(positionList.isEmpty()){

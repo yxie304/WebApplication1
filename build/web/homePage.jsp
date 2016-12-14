@@ -50,6 +50,7 @@
                 </form>
                 
                 <h3 align="center" style="color:#FF0000;">${errorMessage}</h3> 
+                
                 <div class="panel-body">
                     <form action="http://localhost:8080/WebApplication1/searchServlet" method="get">
                        <input type="hidden"  name="search" value="advanced">
@@ -67,9 +68,11 @@
                         <input type="submit" class="btn btn-info"/>
                     </form>
                         
-                    <form action="http://www.google.com/"> 
-                        <input type="image" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="100" height="120">
+                    <form action="http://localhost:8080/WebApplication1/searchServlet"> 
+                        <input type="image" name="search" value="event" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="100" height="120">
                     </form>
+                            
+                        <h3 align="center" style="color:#FF0000;">${eventList}</h3> 
                         
                         <div style="overflow-y: scroll; height:400px">  
                         <c:forEach items="${returnList}" var="item">
@@ -84,6 +87,7 @@
                         </div>   
 
                 </div>
+               
             </div>
         </div>
   
@@ -123,14 +127,30 @@
     
    
     var list= <%=request.getAttribute("position")%>;
-   
+    var showEvent=<%=request.getAttribute("showEvent")%>;
    
     for (var i = 0; i <list.length; i++) {
-      var feature = new OpenLayers.Feature.Vector(
+       var feature = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),
-            {description:list[i].name} ,
+           
             {externalGraphic: 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/256/Map-Marker-Ball-Pink-icon.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
         );    
+        if (showEvent==1){
+            feature.attributes={
+                description:"Description: "+list[i].description,
+                name:"Place: "+list[i].name,
+                time:"Time: "+list[i].time,
+                topic:"Topic: "+list[i].topic
+            };
+        }
+        else if(showEvent==0){
+            feature.attributes={
+                name:"Place: "+list[i].name,
+                openTime:"Open Time: "+list[i].openTime,
+                closeTime:"Close Time: "+list[i].closeTime
+            };
+        }
+         
     vectorLayer.addFeatures(feature);
    
     }
@@ -146,14 +166,26 @@
     };
 
     function createPopup(feature) {
-      feature.popup = new OpenLayers.Popup.FramedCloud("pop",
+      if (showEvent==1){
+        feature.popup = new OpenLayers.Popup.FramedCloud("pop",
           feature.geometry.getBounds().getCenterLonLat(),
           null,
-          '<div class="markerContent">'+feature.attributes.description+'</div>',
+          '<div class="markerContent">'+feature.attributes.topic+'<br>'+feature.attributes.name+'<br>'+feature.attributes.time+'<br>'+feature.attributes.description+'</div>',
           null,
           true,
           function() { controls['selector'].unselectAll(); }
-      );
+        );
+      }
+      else{
+          feature.popup = new OpenLayers.Popup.FramedCloud("pop",
+            feature.geometry.getBounds().getCenterLonLat(),
+            null,
+            '<div class="markerContent">'+feature.attributes.name+'<br>'+feature.attributes.openTime+'<br>'+feature.attributes.closeTime+'</div>',
+            null,
+            true,
+            function() { controls['selector'].unselectAll(); }
+            );
+      }
       //feature.popup.closeOnMove = true;
       map.addPopup(feature.popup);
     }
