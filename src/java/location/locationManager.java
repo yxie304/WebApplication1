@@ -66,7 +66,7 @@ public class locationManager {
     public List<Place> findByName(String name){
         List<Place> retItem;   // '%" + searchParameter
         try {
-            Query query = em.createQuery("SELECT c from Place c WHERE c.name LIKE '%"+name+"%'");
+            Query query = em.createQuery("SELECT c from Place c WHERE LOWER(c.name) LIKE LOWER('%"+name+"%')");
             //query.setParameter(1, name);
             retItem = query.getResultList();
             if (retItem.isEmpty()){
