@@ -26,6 +26,12 @@
         height: 400px;
         width:  800px;
         text-align:center
+      }
+      .modal-dialog{
+        position: absolute;
+        margin-left: 10px;
+        margin-top: 100px;
+        width:20%;
     }
     </style>
     <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
@@ -38,7 +44,17 @@
             $("#theButton").hide();
         }
     });
+   
+    $(function () {
+    $('#myModal').on('shown.bs.modal', function () {
         
+      
+        var currentEvent= <%=request.getAttribute("eventList1")%>;
+        var ll=p.findbyID();
+         
+         // 
+    })
+});
     </script>
  </head>
 <body>
@@ -79,7 +95,7 @@
                         <input type="image" name="search" value="event" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="100" height="120">
                     </form>                        
                        
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="theButton">${eventList.topic}</button>
+                        <button type="button" style="width: 250px;" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="theButton">${eventList.topic}</button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
@@ -91,8 +107,11 @@
                                     </div>
                                     <div class="modal-body">
                                         <div>Topic:${eventList.topic}</div>
+                                        <p>&nbsp;</p>
                                         <div>Time:${eventList.time}</div>
+                                        <p>&nbsp;</p>
                                         <div>Description:${eventList.description}</div>
+                                        <p>&nbsp;</p>
                                         <div>Place:${eventList.placeId.name}</div>
                                     </div>
                                 <div class="modal-footer">
@@ -106,7 +125,7 @@
                         <c:forEach items="${returnList}" var="item">
                             <div class="row" style="margin-left:5px; margin-top:5px;">
                                 <div style="width: 85%;">
-                                     <button type="button" style="width: 250px;" class="btn btn-info" data-toggle="modal" data-target="#${item.osmId}">${item.name}</button>
+                                     <button type="button" style="width: 250px;" class="btn btn-info" data-toggle="modal" data-target="#${item.osmId}" id="showMarker">${item.name}</button>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="${item.osmId}" role="dialog">
@@ -118,7 +137,9 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div>Place:${item.name}</div>
+                                                    <p>&nbsp;</p>
                                                     <div>openTime:${p.convertDate(item.openTime)}</div>
+                                                    <p>&nbsp;</p>
                                                     <div>closeTime:${p.convertDate(item.closeTime)}</div> 
                                                 </div>
                                                 <div class="modal-footer">
@@ -145,43 +166,29 @@
     <script type="text/javascript">
     map = new OpenLayers.Map("map");
     map.addLayer(new OpenLayers.Layer.OSM());
-    
     epsg4326 =  new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
     epsg3857 = new OpenLayers.Projection("EPSG:3857");
     epsg900913=new OpenLayers.Projection("EPSG:900913");
     projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
     var lat=33.7756;
     var lon=-84.3963;
-   // var lat = 399896208;
-   // var lon = -939488028;
     var lonLat = new OpenLayers.LonLat(lon,lat).transform(epsg4326, projectTo);
     var zoom=15;
     map.setCenter (lonLat, zoom);
-
     var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
-    
-    
-   
-    
-
     var list = [
         { lon: lon, lat: lat},
         { lon: lon+0.001, lat: lat+0.001},
         { lon: lon-0.001,  lat: lat-0.001  }
-    ];
-    
-    
-   
+    ]; 
     var list= <%=request.getAttribute("position")%>;
     var showEvent=<%=request.getAttribute("showEvent")%>;
-   
     for (var i = 0; i <list.length; i++) {
        var feature = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),
             {hh:"sss"},
             {externalGraphic: 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/256/Map-Marker-Ball-Pink-icon.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
         );    
-
         if (showEvent==1){
             feature.attributes={
                 description:"Description: "+list[i].description,
@@ -196,17 +203,12 @@
                 openTime:"Open Time: "+list[i].openTime,
                 closeTime:"Close Time: "+list[i].closeTime
             };
-        }
-        
+        }   
     vectorLayer.addFeatures(feature);
-   
     }
-   
-   
+    
     // Define markers as "features" of the vector layer:
     map.addLayer(vectorLayer);
- 
-    
     //Add a selector control to the vectorLayer with popup functions
     var controls = {
       selector: new OpenLayers.Control.SelectFeature(vectorLayer, { onSelect: createPopup, onUnselect: destroyPopup })
@@ -241,6 +243,7 @@
       feature.popup.destroy();
       feature.popup = null;
     }
+    
     
     map.addControl(controls['selector']);
     controls['selector'].activate();

@@ -26,10 +26,8 @@ public class locationManager {
         em.close();
     }
     public locationManager() {
-        EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("WebApplication1PU");
-        em = emf.createEntityManager();
-        //em = EMF.createEntityManager();
-       
+        //EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("WebApplication1PU");
+        em = EMF.createEntityManager();
     }
     
     public List<Place> findByType(String type,String open){

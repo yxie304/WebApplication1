@@ -81,6 +81,7 @@ public class searchServlet extends HttpServlet {
             event=p.findEvent();
             result.add(event.getPlaceId());
             request.setAttribute("eventList",event);
+            request.setAttribute("eventList1",event);
             mark=1;
             showEvent=1;
         }

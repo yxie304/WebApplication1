@@ -5,6 +5,7 @@
  */
 package location;
 
+import java.awt.Toolkit;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,18 +17,8 @@ import java.util.List;
  */
 public class test {
     public static void main(String args[]){
-        
-        locationManager pm=new locationManager();
-        try {
-            Event event=pm.findEvent();
-            
-            System.out.println(event.getDescription());
-           
-            
-          
-        } catch(NullPointerException e) {
-          System.out.println(e);
-}
+        System.out.println(Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+       
 
      
     }
