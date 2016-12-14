@@ -9,10 +9,10 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gis"/>
-      <property name="javax.persistence.jdbc.user" value="yixxie"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://128.61.24.197:5432/maingis"/>
+      <property name="javax.persistence.jdbc.user" value="xie"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="yiyiyi1278"/>
+      <property name="javax.persistence.jdbc.password" value="1234"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
       <property name="eclipselink.logging.level" value="FINEST"/>
       <property name="eclipselink.ddl-generation" value="create-tables"/>
