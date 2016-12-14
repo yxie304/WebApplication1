@@ -64,10 +64,10 @@ public class locationManager {
     }
     
     public List<Place> findByName(String name){
-        List<Place> retItem;
+        List<Place> retItem;   // '%" + searchParameter
         try {
-            Query query = em.createQuery("SELECT c from Place c WHERE c.name = ?1");
-            query.setParameter(1, name);
+            Query query = em.createQuery("SELECT c from Place c WHERE c.name LIKE '%"+name+"%'");
+            //query.setParameter(1, name);
             retItem = query.getResultList();
             if (retItem.isEmpty()){
                 return null;
