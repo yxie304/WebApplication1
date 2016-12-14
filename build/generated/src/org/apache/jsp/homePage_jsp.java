@@ -78,9 +78,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"dist/css/bootstrap-submenu.min.css\">\n");
-      out.write("    <script src=\"https://code.jquery.com/jquery-3.1.0.min.js\" defer></script>\n");
-      out.write("    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" defer></script>\n");
-      out.write("    <script src=\"dist/js/bootstrap-submenu.min.js\" defer></script>\n");
+      out.write("   \n");
       out.write("    <style>\n");
       out.write("      .map {\n");
       out.write("        height: 400px;\n");
@@ -199,9 +197,10 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    for (var i = 0; i <list.length; i++) {\n");
       out.write("       var feature = new OpenLayers.Feature.Vector(\n");
       out.write("            new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),\n");
-      out.write("           \n");
+      out.write("            {hh:\"sss\"},\n");
       out.write("            {externalGraphic: 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/256/Map-Marker-Ball-Pink-icon.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }\n");
       out.write("        );    \n");
+      out.write("\n");
       out.write("        if (showEvent==1){\n");
       out.write("            feature.attributes={\n");
       out.write("                description:\"Description: \"+list[i].description,\n");
@@ -217,7 +216,7 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                closeTime:\"Close Time: \"+list[i].closeTime\n");
       out.write("            };\n");
       out.write("        }\n");
-      out.write("         \n");
+      out.write("        \n");
       out.write("    vectorLayer.addFeatures(feature);\n");
       out.write("   \n");
       out.write("    }\n");

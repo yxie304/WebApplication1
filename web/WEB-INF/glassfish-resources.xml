@@ -6,7 +6,7 @@
         <property name="portNumber" value="5432"/>
         <property name="databaseName" value="maingis"/>
         <property name="User" value="xie"/>
-        <property name="Password" value="yiyiyi1278"/>
+        <property name="Password" value="1234"/>
         <property name="URL" value="jdbc:postgresql://128.61.24.197:5432/maingis"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>

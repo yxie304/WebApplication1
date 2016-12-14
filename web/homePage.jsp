@@ -20,9 +20,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="dist/css/bootstrap-submenu.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" defer></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer></script>
-    <script src="dist/js/bootstrap-submenu.min.js" defer></script>
+   
     <style>
       .map {
         height: 400px;
@@ -132,9 +130,10 @@
     for (var i = 0; i <list.length; i++) {
        var feature = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point( list[i].lon,list[i].lat ).transform(epsg3857, projectTo),
-           
+            {hh:"sss"},
             {externalGraphic: 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/256/Map-Marker-Ball-Pink-icon.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
         );    
+
         if (showEvent==1){
             feature.attributes={
                 description:"Description: "+list[i].description,
@@ -150,7 +149,7 @@
                 closeTime:"Close Time: "+list[i].closeTime
             };
         }
-         
+        
     vectorLayer.addFeatures(feature);
    
     }
