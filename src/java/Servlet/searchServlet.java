@@ -79,9 +79,8 @@ public class searchServlet extends HttpServlet {
         }
         else if(search.equals("event")){
             event=p.findEvent();
-            String description=event.getTopic();
             result.add(event.getPlaceId());
-            request.setAttribute("eventList",description);
+            request.setAttribute("eventList",event);
             mark=1;
             showEvent=1;
         }
@@ -92,7 +91,6 @@ public class searchServlet extends HttpServlet {
             for (int i=0;i<result.size();i++){
                 Lonlat lonlat=p.findbyID(result.get(i).getOsmId());
                 String positionName=result.get(i).getName();
-               // Lonlat lonlat=p.findbyID(42706715);
                 if(lonlat!=null){
                     if(showEvent==1){
                         String description=event.getDescription();

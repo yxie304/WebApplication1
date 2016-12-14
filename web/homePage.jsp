@@ -31,6 +31,11 @@
     <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
     <title>OpenLayers 3 example</title>
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <script>
+        function myFunction() {
+           
+        }
+</script>
  </head>
 <body>
     
@@ -69,7 +74,33 @@
                     <form action="http://localhost:8080/WebApplication1/searchServlet"> 
                         <input type="image" name="search" value="event" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="100" height="120">
                     </form>                        
-                        <h4 align="center" style="color:#008000;">${eventList}</h4>                       
+                       
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">${eventList.topic}</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Details</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>Topic:${eventList.topic}</div>
+                                        <div>Time:${eventList.time}</div>
+                                        <div>Description:${eventList.description}</div>
+                                        <div>Place:${eventList.placeId.name}</div>
+                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
                         <div style="overflow-y: scroll; height:400px">  
                         <c:forEach items="${returnList}" var="item">
                             <div class="row">

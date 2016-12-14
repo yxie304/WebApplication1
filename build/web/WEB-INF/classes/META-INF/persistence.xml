@@ -9,7 +9,7 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://128.61.24.197:5432/maingis"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://100.65.181.68:5432/maingis"/>
       <property name="javax.persistence.jdbc.user" value="xie"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="1234"/>
