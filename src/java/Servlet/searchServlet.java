@@ -108,11 +108,10 @@ public class searchServlet extends HttpServlet {
                         Date c=result.get(i).getCloseTime();
                         if(o!=null){
                             openTime=df.format(o);
-                        }
+                        }      
                         if(c!=null){
                             closeTime=df.format(c);
                         }
-                       
                         positionList.add("{lon:"+lonlat.getLon()+","+"lat: "+lonlat.getLat()+","+"name: "+"\""+positionName+"\""+","+"openTime: "+"\""+openTime+"\""+","+"closeTime: "+"\""+closeTime+"\"" +"}");
                         request.setAttribute("showEvent",0);
                     }

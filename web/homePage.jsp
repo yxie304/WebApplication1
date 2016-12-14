@@ -101,16 +101,31 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
-                        
-                        
+
                         <div style="overflow-y: scroll; height:400px">  
                         <c:forEach items="${returnList}" var="item">
-                            <div class="row">
-                                <div class="panel panel-primary" style="width: 85%;">
-                                    <div class="panel-body" style="margin:auto" >
-                                        <font size="2">${item.name}</font>   
+                            <div class="row" style="margin-left:5px; margin-top:5px;">
+                                <div style="width: 85%;">
+                                     <button type="button" style="width: 250px;" class="btn btn-info" data-toggle="modal" data-target="#${item.osmId}">${item.name}</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="${item.osmId}" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Details</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>Place:${item.name}</div>
+                                                    <div>openTime:${p.convertDate(item.openTime)}</div>
+                                                    <div>closeTime:${p.convertDate(item.closeTime)}</div> 
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

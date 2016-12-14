@@ -90,4 +90,15 @@ public class locationManager {
         
         return event;
     }
+    public String convertDate(Date date){
+        String convertedDate;
+        if(date==null){
+            convertedDate="Not available";
+        }
+        else{
+            DateFormat df = new SimpleDateFormat("HH:mm:ss");
+            convertedDate=df.format(date);
+        }
+        return convertedDate;
+    }
 }
