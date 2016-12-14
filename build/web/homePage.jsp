@@ -33,6 +33,7 @@
         margin-top: 100px;
         width:20%;
     }
+   
     </style>
     <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
     <title>OpenLayers 3 example</title>
@@ -43,22 +44,20 @@
         if (list==null){
             $("#theButton").hide();
         }
-    });
    
-    $(function () {
-    $('#myModal').on('shown.bs.modal', function () {
-        
-      
-        var currentEvent= <%=request.getAttribute("eventList1")%>;
-        var ll=p.findbyID();
-         
-         // 
-    })
 });
     </script>
  </head>
 <body>
-    
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+        </script>
 <div class="col-md-3" >
             <div class="panel panel-success">
                 <form class="navbar-form" action="http://localhost:8080/WebApplication1/searchServlet?"method="get">
@@ -95,6 +94,8 @@
                         <input type="image" name="search" value="event" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="100" height="120">
                     </form>                        
                        
+                           
+                            
                         <button type="button" style="width: 250px;" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="theButton">${eventList.topic}</button>
 
                         <!-- Modal -->
@@ -105,6 +106,16 @@
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h4 class="modal-title">Details</h4>
                                     </div>
+                                    
+                                    <div class="btn-group">  
+                                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                                        <div class="fb-share-button" data-href="http://localhost:8080/Webapplication1/homePage.jsp" data-layout="button_count" ><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+                                        <a href="mailto:?subject=I want you to see this event&amp;body=Check out this event!%20%3A%0D%0ATopic: ${eventList.topic}%20%3A%0D%0ATime: ${eventList.time}%20%3A%0D%0ADescription: ${eventList.description}%20%3A%0D%0APlace: ${eventList.placeId.name}"
+                                            title="Share by Email">
+                                            <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
+                                        </a>
+                                    </div>
+                                    
                                     <div class="modal-body">
                                         <div>Topic:${eventList.topic}</div>
                                         <p>&nbsp;</p>
