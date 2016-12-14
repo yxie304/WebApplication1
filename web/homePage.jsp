@@ -68,10 +68,8 @@
                         
                     <form action="http://localhost:8080/WebApplication1/searchServlet"> 
                         <input type="image" name="search" value="event" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="100" height="120">
-                    </form>
-                            
-                        <h3 align="center" style="color:#FF0000;">${eventList}</h3> 
-                        
+                    </form>                        
+                        <h4 align="center" style="color:#008000;">${eventList}</h4>                       
                         <div style="overflow-y: scroll; height:400px">  
                         <c:forEach items="${returnList}" var="item">
                             <div class="row">

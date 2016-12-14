@@ -134,12 +134,10 @@ public final class homePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        \n");
       out.write("                    <form action=\"http://localhost:8080/WebApplication1/searchServlet\"> \n");
       out.write("                        <input type=\"image\" name=\"search\" value=\"event\" src=\"http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg\" alt=\"Submit\" width=\"100\" height=\"120\">\n");
-      out.write("                    </form>\n");
-      out.write("                            \n");
-      out.write("                        <h3 align=\"center\" style=\"color:#FF0000;\">");
+      out.write("                    </form>                        \n");
+      out.write("                        <h4 align=\"center\" style=\"color:#008000;\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${eventList}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</h3> \n");
-      out.write("                        \n");
+      out.write("</h4>                       \n");
       out.write("                        <div style=\"overflow-y: scroll; height:400px\">  \n");
       out.write("                        ");
       if (_jspx_meth_c_forEach_1(_jspx_page_context))
