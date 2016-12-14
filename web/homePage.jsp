@@ -32,10 +32,14 @@
     <title>OpenLayers 3 example</title>
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
     <script>
-        function myFunction() {
-           
+    $(document).ready(function() {
+        var list= <%=request.getAttribute("eventList")%>;
+        if (list==null){
+            $("#theButton").hide();
         }
-</script>
+    });
+        
+    </script>
  </head>
 <body>
     
@@ -75,7 +79,7 @@
                         <input type="image" name="search" value="event" src="http://previews.123rf.com/images/faysalfarhan/faysalfarhan1405/faysalfarhan140500060/28774232-Events-icon-glossy-green-round-button-Stock-Photo.jpg" alt="Submit" width="100" height="120">
                     </form>                        
                        
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">${eventList.topic}</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="theButton">${eventList.topic}</button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
